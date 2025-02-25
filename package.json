@@ -1,0 +1,27 @@
+{
+  "name": "tarefa-node-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "6.4.1",
+    "@types/node": "22.13.5",
+    "dotenv": "16.4.7",
+    "fastify": "5.2.1",
+    "tsup": "2.0.3",
+    "tsx": "4.19.3",
+    "typescript": "5.7.3",
+    "zod": "3.24.2"
+  },
+  "devDependencies": {
+    "prisma": "6.4.1"
+  }
+}
