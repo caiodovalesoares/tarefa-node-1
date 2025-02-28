@@ -1,6 +1,7 @@
 import fastify from "fastify";
-import { appRoutes } from "./http/routes";
+import { userRoutes } from "./http/controllers/users/routes";
 import { ZodError } from "zod";
+import { postRoutes } from "./http/controllers/posts/routes";
 
 //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7UMyFqvtetc9gRS_yKxWXjN61X_4wq6F3Dg&s
 
@@ -10,7 +11,8 @@ app.get("/", (request, reply) => {
     return { message: "Hello, World!"}
 })
 
-app.register(appRoutes)
+app.register(userRoutes)
+app.register(postRoutes)
 
 app.setErrorHandler((error, request, reply) => {
     if (error instanceof ZodError) {
