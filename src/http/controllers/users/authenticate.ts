@@ -14,13 +14,20 @@ export async function authenticate(request: FastifyRequest, reply: FastifyReply)
     try {
         const prismaUsersRepository = new PrismaUsersRepository()
         const authenticateUseCase = new AuthenticateUseCase(prismaUsersRepository)
-        await authenticateUseCase.execute({
+
+        const { user } = await authenticateUseCase.execute({
             email,
             senha
         })
+
+        const token = await reply.jwtSign({}, {
+            sign: {
+                sub: user.id
+            }
+        })
+
+        return reply.status(200).send({ token })
     } catch (err) {
         return reply.status(401).send()
     }
-
-    return reply.status(200).send('Usuário autenticado com sucesso!')
 }
