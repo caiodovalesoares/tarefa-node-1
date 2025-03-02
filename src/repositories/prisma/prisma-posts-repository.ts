@@ -16,6 +16,10 @@ export class PrismaPostsRepository {
     //     }
     // }
 
+    async getAll(): Promise<Post[]> {
+            return await prisma.post.findMany() 
+        }
+
     async create(data: Prisma.PostUncheckedCreateInput): Promise<Post> {
         try {
             const post = await prisma.post.create({
