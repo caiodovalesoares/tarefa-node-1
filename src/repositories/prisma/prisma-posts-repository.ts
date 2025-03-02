@@ -3,19 +3,11 @@ import { Prisma, Post } from "@prisma/client";
 import { PostUpdateInput } from "../posts-repository";
 
 export class PrismaPostsRepository {
-    // async findByUser(userId: string): Promise<Post[] | null> {
-    //     try {
-    //         const posts = await prisma.post.findMany({
-    //             where: {
-    //                 userId
-    //             }
-    //         })
-    //         return posts.length > 0 ? posts : null
-    //     } catch (error) {
-    //         console.error("Erro encontrando posts por usuário:", error)
-    //         throw new Error("Erro ao encontrar posts por usuário")
-    //     }
-    // }
+    async findByUserId(userId: string): Promise<Post[]> {
+        return await prisma.post.findMany({
+            where: { userId },
+        })
+    }
 
     async update(id: string, data: PostUpdateInput): Promise<Post | null> {
             const post = await prisma.post.update({
