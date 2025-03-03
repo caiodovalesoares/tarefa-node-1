@@ -1,6 +1,6 @@
 import fastify from "fastify";
 import { userRoutes } from "./http/controllers/users/routes";
-import { any, ZodError } from "zod";
+import { ZodError } from "zod";
 import { postRoutes } from "./http/controllers/posts/routes";
 import fastifyJwt from "@fastify/jwt";
 import fastifyCookie from "@fastify/cookie";
